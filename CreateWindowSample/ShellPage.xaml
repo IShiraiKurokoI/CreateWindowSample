@@ -1,0 +1,52 @@
+<!-- Copyright (c) Microsoft Corporation and Contributors. -->
+<!-- Licensed under the MIT License. -->
+
+<Page
+    x:Class="CreateWindowSample.ShellPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CreateWindowSample"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:helpers="using:WinUICommunity.Common.Helpers"
+    xmlns:views="using:CreateWindowSample.Pages"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Loaded="UserControl_Loaded">
+    <Grid>
+        <NavigationView
+            x:Name="navigationView"
+            IsSettingsVisible="False"
+            IsTitleBarAutoPaddingEnabled="False"
+            ItemInvoked="navigationView_ItemInvoked"
+            IsBackButtonVisible="Collapsed"
+            OpenPaneLength="240"
+            CompactPaneLength="65"
+            SelectedItem="{x:Bind ViewModel.Selected, Mode=OneWay}">
+
+            <NavigationView.Resources>
+                <x:Double x:Key="NavigationViewItemOnLeftIconBoxHeight">24</x:Double>
+            </NavigationView.Resources>
+
+            <NavigationView.AutoSuggestBox>
+                <AutoSuggestBox Name="autoSuggestBox" QueryIcon="Find" PlaceholderText="Search" TextChanged="OnControlsSearchBoxTextChanged" QuerySubmitted="OnControlsSearchBoxQuerySubmitted"/>
+            </NavigationView.AutoSuggestBox>
+
+            <NavigationView.MenuItems>
+                <NavigationViewItem
+                    Margin="0,0,12,0"
+                    Content="Home"
+                    IsSelected="True"
+                    helpers:NavHelper.NavigateTo="views:HomePage">
+                </NavigationViewItem>
+
+                <NavigationViewItem
+                    Margin="0,0,12,0"
+                    Content="Theme"
+                    helpers:NavHelper.NavigateTo="views:ThemePage">
+                </NavigationViewItem>
+            </NavigationView.MenuItems>
+            <Frame x:Name="shellFrame" Background="Transparent"/>
+        </NavigationView>
+    </Grid>
+</Page>

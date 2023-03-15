@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "CreateWindowSample (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "CreateWindowSample (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
